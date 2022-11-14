@@ -23,46 +23,11 @@ fetch("http://localhost:9000/todos", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
-}, );
+
+window.location.replace("http://127.0.0.1:5500/client/todos.html")
+
+}, 
+
+);
 
 
-get_btn.addEventListener('click', () =>{
-  var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-};
-
-fetch("http://localhost:9000/todos", requestOptions)
-  .then(response => response.text())
-  .then(result => createTable(result))
-  .catch(error => console.log('error', error));
-})
-
- function createTable(data){
-
-  const row = document.getElementById("result");
-  console.log(data);
-  const myObj = JSON.parse(data);
-  for (i in myObj.todos){
-    const bigdiv = document.createElement("row");
-    const div = document.createElement("div");
-    const activity = document.createElement("h1");
-    activity.innerHTML = myObj.todos[i]["activity"];
-    div.appendChild(activity);  
-    var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = myObj.todos[i]["finished"];
-      bigdiv.appendChild(checkbox);
-      bigdiv.appendChild(activity);
-     row.appendChild(bigdiv);
-    }
-  
-   
-
-
-
- }
